@@ -1,10 +1,10 @@
 /*Se declara la clase Postulante*/
 class Postulante {
     constructor(nombre, apellido, edad, perfil){
-        this.nombre  = nombre.toUpperCase();
-        this.apellido  = apellido.toUpperCase();
+        this.nombre  = nombre;
+        this.apellido  = apellido;
         this.edad  = parseInt(edad);
-        this.perfil  = perfil.toUpperCase();
+        this.perfil  = perfil;
         this.registrado = true;
         this.aprobaado = false;
         this.fecha = Date();
@@ -14,38 +14,14 @@ class Postulante {
 /*Se declara el array postulantes */
 const postulantes = [];
 
-/*Agregamos el objeto con el método push */
-postulantes.push(new Postulante("José","Perez",18,"Visita"));
-postulantes.push(new Postulante("Juan","Huaman",32,"Temporal"));
-postulantes.push(new Postulante("Piero","Pastor",25,"Permanente"));
-postulantes.push(new Postulante("Victor","Ronceros",55,"Visita"));
 
-/*Listamos los objetos creados */
-console.log(postulantes);
-
-const encontrarIndex = (array,elemento) =>{
-    for(let index=0;index < array.lenght; index++){
-        if (array[index] === elemento){
-            return index;
-        }
-    }
-}
-
-console.log(encontrarIndex(postulantes,"PIERO"));
-
-
-
-
-
-
-/*Variables para que se ingrese desde el navegador y se agregue la clase postulante 
-let nombres = prompt("Ingrese sus nombres");
-let apellidos = prompt("Ingrese sus apellidos");
+/*Variables para que se ingrese desde el navegador y se agregue la clase postulante */
+let nombre = prompt("Ingrese su nombre");
+let apellido = prompt("Ingrese su apellido");
 let edad = parseInt(prompt("Ingrese su Edad"));
 let perfil = prompt("Ingrese el perfil de psotulanción: Visita/Permanente o Temporal");
 
-let obj = new Postulante (nombres, apellidos, edad, perfil);
-postulante.push(obj);
+let obj = new Postulante (nombre, apellido, edad, perfil);
+postulantes.push(obj);
 
-console.log(postulante);
-*/
+console.log(postulantes);
