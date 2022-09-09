@@ -1,16 +1,3 @@
-/*Se declara la clase Postulante*/
-class Postulante {
-    constructor(nombres, apellidos, documento, edad){
-        this.nombres  = nombres;
-        this.apellidos  = apellidos;
-        this.documento  = documento;
-        this.edad  = parseInt(edad);
-        this.registrado = true;
-        this.aprobado = false;
-        this.fecha = Date();
-    }
-}
-
 /*Declaración de array de lista de postulantes */
 const listaPostulante = [
     { nombres: "Gabriela Maria", apellidos:"Ruiz pastor", documento: "25632145", edad: 25, registrado: true, aprobado: true, fechaRegistro: Date() },
@@ -27,15 +14,15 @@ const listaPostulante = [
 /*Funcion para registrar postulante*/
 function agregarPostulante(){
     /*Variables para que se ingrese desde el navegador y se agregue al arreglo postulante */
-    let nombres = prompt("Ingrese su nombre");
-    let apellidos = prompt("Ingrese su apellido");
+    let nombres = prompt("Ingrese sus nombres");
+    let apellidos = prompt("Ingrese sus apellidos");
     let documento = prompt("Ingrese su número de documento");
     let edad = parseInt(prompt("Ingrese su Edad"));
+    let registrado = true;
+    let aprobado = false;
+    let fechaRegistro= Date();
 
-
-    let obj = new Postulante ({ nombres: nombres, apellidos: apellidos, documento: documento, edad : edad });
-
-    listaPostulante.push(obj);
+    listaPostulante.push({nombres, apellidos, documento, edad, registrado, aprobado,fechaRegistro});
     console.log(listaPostulante);
 }
 
@@ -47,7 +34,6 @@ function buscarPostulante(docu) {
         alert("postulante no encontrado");
     }else{
         alert(`Resultado de búsqueda:
-        Id: ${postulante.id}
         Nombres: ${postulante.nombres}
         Apellidos: ${postulante.apellidos},
         N° Documento: ${postulante.documento}
@@ -59,17 +45,20 @@ function buscarPostulante(docu) {
 
 /*Funcion para eliminar postulante */
 const eliminarPostulante = (documento) => {
+
     for(const item of listaPostulante){
-        if (listaPostulante.documento === documento){
-            listaPostulante.splice(item,1);
+        if (item.documento === documento){
+            // listaPostulante.splice(item,1);
+            //console.log(listaPostulante.indexOf(item));
+            listaPostulante.splice(listaPostulante.indexOf(item), 1);
         }
       }
-    console.log(listaPostulante);
+     console.log(listaPostulante);
 }
 
 /*Se declara la variable para obtener el nombre ingresado */
 let nombre = prompt("¡Hola! Ingrese su nombre a continuación:");
-alert(`Bienvenid@ ${nombre}`)
+alert(`Bienvenid@ ${nombre} al sistema de acreditación de personal `)
 
 /*Se declara el tipo de operación para obtener el tipo de operación a realizar*/
 let tipoOperacion;
