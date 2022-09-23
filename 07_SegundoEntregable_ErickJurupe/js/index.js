@@ -16,6 +16,7 @@ const commentsContainer = document.querySelector("#comments-container");
 commentsContainer.appendChild(inputContainer);
 
 /*Agregamos el imput dentro del div creado */
+inputContainer.innerText="Ingrese comentario";
 inputContainer.appendChild(input);
 
 /*Agregamos el vento al input declarado */
