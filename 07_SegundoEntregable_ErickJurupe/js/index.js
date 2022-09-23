@@ -55,6 +55,7 @@ function handleEnter(e, current) {
   }
 }
 
+/*Función que recibe el arreglo de comentario y el div principal*/
 function renderComments(arr, parent) {
   /*Se recorre el arreglo de comentario */
   arr.forEach((element) => {
