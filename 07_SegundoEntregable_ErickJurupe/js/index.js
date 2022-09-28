@@ -35,14 +35,18 @@ function handleEnter(e, current) {
       responses: [],
     };
 
-    /*Verificamos si existe un comentario */
-    if (current === null) {
-      /*Lo agrega al inicio el primer comentario */
-      commentario.unshift(newComment);
-    } else {
-      /*Existe comentarios, pero los agrega al inicio */
-      current.responses.unshift(newComment);
-    }
+    // /*Verificamos si existe un comentario */
+    // if (current === null) {
+    //   /*Lo agrega al inicio el primer comentario */
+    //   commentario.unshift(newComment);
+    // } else {
+    //   /*Existe comentarios, pero los agrega al inicio */
+    //   current.responses.unshift(newComment);
+    // }
+
+    /*Se optimiza*/
+    current === null ? commentario.unshift(newComment) : current.responses.unshift(newComment);
+
     /*Limpiamos lo ingresado y el contenedor principal para que no se repita lo ingresado*/
     e.target.value = "";
     commentsContainer.innerHTML = "";
