@@ -1,6 +1,7 @@
 /*Se declara el arreglo para alamacenar los comentarios */
 const commentario = [];
 
+
 /*Creamos un contenedor div */
 const inputContainer = document.createElement("div");
 
@@ -32,7 +33,7 @@ function handleEnter(e, current) {
     const newComment = {
       text: e.target.value,
       likes: 0,
-      responses: [],
+      responses: []
     };
 
     // /*Verificamos si existe un comentario */
@@ -75,9 +76,11 @@ function renderComments(arr, parent) {
     const replyButton = document.createElement("button");
     const likeButton = document.createElement("button");
 
+
     /*Se agrega nombres a casa botón declarado */
     replyButton.textContent = "Send";
     likeButton.textContent = "Like";
+
 
     /*Agregamos el evento clik al botón Send para la respuesta de cada comentario que realiza el usuario */
     replyButton.addEventListener("click", (e) => {
@@ -92,6 +95,13 @@ function renderComments(arr, parent) {
 
     /*Agregamos el evento clik al botón Like para obtener y alamcenar la cantidad de Likes que presiona el usuario */
     likeButton.addEventListener("click", (e) => {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Gracias por tu like",
+        showConfirmButton: false,
+        timer: 2000
+      });
       element.likes++;
       likeButton.textContent = `${
         element.likes > 0 ? element.likes : ""
