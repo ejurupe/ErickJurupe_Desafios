@@ -17,7 +17,7 @@ const commentsContainer = document.querySelector("#comments-container");
 commentsContainer.appendChild(inputContainer);
 
 /*Agregamos el imput dentro del div creado */
-inputContainer.innerText="Ingrese comentario";
+inputContainer.innerText="Opine sobre los productos";
 inputContainer.appendChild(input);
 
 /*Agregamos el vento al input declarado */
@@ -132,3 +132,30 @@ function renderComments(arr, parent) {
     parent.appendChild(commentContainer);
   });
 }
+
+/*Se declara la función traer datoss */
+const traerDatos = async () => {
+  const lista = document.getElementById("lista");
+  try {
+    /*Obtenemos el json local */
+    const response = await fetch("./json/data.json");
+    const data = await response.json();
+
+    /*Se recorre el Json para mostrar */
+    data.forEach((producto) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+      <h2>ID: ${producto.id}</h2>
+      <p>Nombre: ${producto.nombre}</p>
+      <p>Precio: ${producto.precio}</p>
+    `;
+
+      lista.append(li);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/*Se llama a la función */
+traerDatos();

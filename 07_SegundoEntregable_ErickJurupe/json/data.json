@@ -1,0 +1,6 @@
+[
+    { "id": 100, "nombre": "TV Sansumg", "precio": 1500 },
+    { "id": 101, "nombre": "Laptop Lenovo I7", "precio": 3200 },
+    { "id": 102, "nombre": "Tablet S6 Lite Sansumg", "precio": 1200 },
+    { "id": 103, "nombre": "Iphone 12", "precio": 4350 }
+  ]
