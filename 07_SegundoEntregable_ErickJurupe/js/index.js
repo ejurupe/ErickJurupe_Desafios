@@ -17,7 +17,7 @@ const commentsContainer = document.querySelector("#comments-container");
 commentsContainer.appendChild(inputContainer);
 
 /*Agregamos el imput dentro del div creado */
-inputContainer.innerText="Opine sobre los productos";
+inputContainer.innerText="Ingrese un comentario/pregunta";
 inputContainer.appendChild(input);
 
 /*Agregamos el vento al input declarado */
@@ -133,25 +133,54 @@ function renderComments(arr, parent) {
   });
 }
 
-/*Se declara la función traer datoss */
+/*Se declara la función traer datoss localstorage JSON*/
+let listaComentario = [];
+let listaComentarioStorage = localStorage.getItem("commentarios");
+
+/*Se declara la función traer datos del localstorage */
 const traerDatos = async () => {
-  const lista = document.getElementById("lista");
+  //const lista = document.getElementById("lista");
   try {
-    /*Obtenemos el json local */
-    const response = await fetch("./json/data.json");
-    const data = await response.json();
 
-    /*Se recorre el Json para mostrar */
-    data.forEach((producto) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
-      <h2>ID: ${producto.id}</h2>
-      <p>Nombre: ${producto.nombre}</p>
-      <p>Precio: ${producto.precio}</p>
-    `;
+    if (listaComentarioStorage){
+      //console.log(listaComentarioStorage);
+      listaComentario = JSON.parse(listaComentarioStorage);
+    }
+    if (listaComentario.length > 0){
+      
+      listaComentario.forEach((item) => {
+        let div = document.createElement("div");
+        div.innerHTML = `
+                        <h2>Comentario principal: ${item.text}</h2>`;
+    
+        document.body.append(div);
+      });
 
-      lista.append(li);
-    });
+      // const li = document.createElement("li");
+      // li.innerHTML = listaComentario;
+
+      // li.innerHTML = `
+      // <h2>Comentario: ${item.id}</h2>
+      // <p>nombre: ${item.producto}</p>
+      // <b>$${item.precio}</b>`;
+
+      //lista.append(li);
+    }
+    // /*Obtenemos el json local */
+    // const response = await fetch("./json/data.json");
+    // const data = await response.json();
+
+    // /*Se recorre el Json para mostrar */
+    // data.forEach((producto) => {
+    //   const li = document.createElement("li");
+    //   li.innerHTML = `
+    //   <h2>ID: ${producto.id}</h2>
+    //   <p>Nombre: ${producto.nombre}</p>
+    //   <p>Precio: ${producto.precio}</p>
+    // `;
+
+    //   lista.append(li);
+    // });
   } catch (error) {
     console.log(error);
   }
